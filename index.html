@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Complete Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg">        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-view="home">
+                <i class="fas fa-home"></i>
+                Home
+            </li>
+            <li class="nav-item" data-view="search">
+                <i class="fas fa-search"></i>
+                Search
+            </li>
+            <li class="nav-item" data-view="library">
+                <i class="fas fa-book-open"></i>
+                Your Library
+            </li>
+        </ul>
+        <div class="nav-divider"></div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <i class="fas fa-plus"></i>
+                Create Playlist
+            </li>
+            <li class="nav-item">
+                <i class="fas fa-heart"></i>
+                Liked Songs
+            </li>
+        </ul>
+        <div class="nav-divider"></div>
+        <div class="nav-menu">
+            <div class="playlist-item">Daily Mix 1</div>
+            <div class="playlist-item">Daily Mix 2</div>
+            <div class="playlist-item">Daily Mix 3</div>
+            <div class="playlist-item">RapCaviar</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="What do you want to listen to?">
+            </div>
+            <div class="profile top-btn">S</div>
+        </header>
+
+        <!-- Main Panel -->
+        <main class="main-panel" id="mainPanel">
+            <!-- Home View -->
+            <div id="homeView">
+                <div class="section-header">
+                    <h2 class="section-title">Good evening</h2>
+                    <a href="#" class="section-seeall">See all</a>
+                </div>
+                <div class="cards-grid">
+                    <div class="card" data-playlist="chill">
+                        <img src="img/cover (3).jpg" alt="Chill">
+                        <div class="card-overlay">
+                            <div class="card-title">Chill Hits</div>
+                            <div class="card-subtitle">Chill</div>
+                        </div>
+                    </div>
+                    <div class="card" data-playlist="party">
+                        <img src="img/party.jpg" alt="Party">
+                        <div class="card-overlay">
+                            <div class="card-title">Party Hits</div>
+                            <div class="card-subtitle">Dance</div>
+                        </div>
+                    </div>
+                    <div class="card" data-playlist="workout">
+                        <img src="img/gym.jpg" alt="Workout">
+                        <div class="card-overlay">
+                            <div class="card-title">Workout</div>
+                            <div class="card-subtitle">Fitness</div>
+                        </div>
+                    </div>
+                    <div class="card" data-playlist="rap">
+                        <img src="img/rap.jpg" alt="Rap">
+                        <div class="card-overlay">
+                            <div class="card-title">RapCaviar</div>
+                            <div class="card-subtitle">Hip-hop</div>
+                        </div>
+                    </div>
+                    <div class="card" data-playlist="Haryanvi">
+                        <img src="img/haryana.jpg" alt="Haryanvi">
+                        <div class="card-overlay">
+                            <div class="card-title">Haryanvi</div>
+                            <div class="card-subtitle">Haryana-Hits</div>
+                        </div>
+                    </div>
+                    <div class="card" data-playlist="punjabi">
+                        <img src="img/pun.jpg" alt="Punjabi">
+                        <div class="card-overlay">
+                            <div class="card-title">Punjabi</div>
+                            <div class="card-subtitle">Punjabi-Music</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="section-header">
+                    <h2 class="section-title">Recently played</h2>
+                    <a href="#" class="section-seeall">See all</a>
+                </div>
+                <div class="tracks-list" id="recentTracks"></div>
+            </div>
+
+            <!-- Search View -->
+            <div id="searchView" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Search Results</h2>
+                </div>
+                <div class="tracks-list" id="searchResults"></div>
+            </div>
+
+            <!-- Library View -->
+            <div id="libraryView" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Liked Songs</h2>
+                </div>
+                <div class="tracks-list" id="likedTracks"></div>
+            </div>
+        </main>
+
+        <!-- Player Bar -->
+        <div class="player-bar">
+            <div class="now-playing">
+                <img class="now-playing-art" id="nowPlayingArt" src="" alt="Now Playing">
+                <div class="now-playing-info">
+                    <h3 id="nowPlayingTitle">Blinding Lights</h3>
+                    <p id="nowPlayingArtist">The Weeknd</p>
+                </div>
+            </div>
+
+            <div class="player-controls-main">
+                <div class="controls-main">
+                    <button class="control-btn-main" title="Shuffle">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn-main" id="prevBtn" title="Previous">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn-main play-pause-large" id="playPauseBtn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn-main" id="nextBtn" title="Next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn-main" title="Repeat">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="progress-main">
+                    <span class="time-text" id="currentTime">0:00</span>
+                    <div class="progress-track" id="progressContainer">
+                        <div class="progress-current" id="progressFill"></div>
+                    </div>
+                    <span class="time-text" id="duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-section">
+                <button class="volume-btn" id="volumeMute">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                </button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" preload="metadata"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
